@@ -1,0 +1,172 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #f1f5f9;
+    --text-muted: #94a3b8;
+    --primary: #0148b9;
+    --primary-hover: #2563eb;
+    --border: #334155;
+    --radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 650px;
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+}
+
+h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+nav {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.btn, .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:hover, .btn-submit:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn:active, .btn-submit:active {
+    transform: scale(0.98);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #0f172a;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.table-container {
+    margin-top: 15px;
+    overflow-x: auto;
+}
+
+/* Estilo para quando a tabela/lista for gerada dinamicamente */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+}
+
+th {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+td {
+    color: var(--text-color);
+}
+
+#lista-equipamentos p {
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 10px 0;
+}
+/* Estilos para os botões de ação na tabela */
+.btn-acao {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn-acao:active {
+    transform: scale(0.95);
+}
+
+.btn-editar {
+    background-color: #0148b9; /* Azul */
+    color: white;
+}
+
+.btn-editar:hover {
+    background-color: #2563eb;
+}
+
+.btn-apagar {
+    background-color: #b20505; /* Vermelho suave */
+    color: white;
+}
+
+.btn-apagar:hover {
+    background-color: #dc2626;
+}

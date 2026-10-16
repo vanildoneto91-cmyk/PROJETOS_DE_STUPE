@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Equipamento</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Editar Equipamento</h1>
+
+        <nav>
+            <a href="index.html" class="btn">Voltar à Lista</a>
+        </nav>
+
+        <form id="form-editar">
+            <div class="form-group">
+                <label for="item">Item</label>
+                <input type="text" id="item" required>
+            </div>
+            <div class="form-group">
+                <label for="marca">Marca</label>
+                <input type="text" id="marca" required>
+            </div>
+            <div class="form-group">
+                <label for="status">Status da Compra</label>
+                <input type="text" id="status" required>
+            </div>
+            <button type="submit" class="btn-submit">Guardar Alterações</button>
+        </form>
+    </div>
+
+    <!-- Importar o cliente do Supabase (ajusta o caminho se o teu script estiver noutro sítio) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabaseClient.js"></script>
+    <script>
+        // 1. Obter o ID passado no URL (ex: edit-item.html?id=1)
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+
+        if (!id) {
+            alert('ID do equipamento não especificado!');
+            window.location.href = 'index.html';
+        }
+
+        // 2. Carregar os dados atuais do item para preencher o formulário
+        async function carregarDados() {
+            const { data, error } = await supabaseClient
+                .from('equipamentos')
+                .select('*')
+                .eq('id', id)
+                .single();
+
+            if (error) {
+                console.error('Erro ao carregar dados:', error);
+                alert('Erro ao carregar os dados do equipamento.');
+            } else if (data) {
+                document.getElementById('item').value = data.item;
+                document.getElementById('marca').value = data.marca;
+                document.getElementById('status').value = data.status_compra; // Ajusta o nome da coluna se for diferente na tua base de dados
+            }
+        }
+
+        carregarDados();
+
+        // 3. Submeter a atualização para o Supabase
+        document.getElementById('form-editar').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const itemAtualizado = document.getElementById('item').value;
+            const marcaAtualizada = document.getElementById('marca').value;
+            const statusAtualizado = document.getElementById('status').value;
+
+            const { error } = await supabaseClient
+                .from('equipamentos')
+                .update({
+                    item: itemAtualizado,
+                    marca: marcaAtualizada,
+                    status_compra: statusAtualizado
+                })
+                .eq('id', id);
+
+            if (error) {
+                alert('Erro ao atualizar: ' + error.message);
+            } else {
+                // Redireciona imediatamente para a lista sem mostrar o alert()
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+
+</html>

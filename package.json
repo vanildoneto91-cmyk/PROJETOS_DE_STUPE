@@ -1,0 +1,14 @@
+{
+  "name": "projeto_sexta-feira_",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.2",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.3"
+  }
+}

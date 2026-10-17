@@ -4,11 +4,24 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.117.2",
+    "@supabase/supabase-js": "^2.118.0",
     "dotenv": "^16.6.1",
     "express": "^4.22.3"
-  }
+  },
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanildoneto91-cmyk/PROJETOS_DE_STUPE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vanildoneto91-cmyk/PROJETOS_DE_STUPE/issues"
+  },
+  "homepage": "https://github.com/vanildoneto91-cmyk/PROJETOS_DE_STUPE#readme"
 }
